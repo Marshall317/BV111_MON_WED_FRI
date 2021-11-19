@@ -1,0 +1,135 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	int score;
+	int sum = 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Input score: ";
+		cin >> score;
+		sum += score;//sum = sum + score;
+	}
+
+	cout << "Score: " << sum / 5.0 << endl;
+
+
+	return 0;
+}
+====================================================================
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	//random
+	int a;
+
+	srand(time(NULL));
+
+	a = rand() % 100 + 1;//1..100
+
+	cout << "a = " << a << endl;
+
+
+	//rand() % (Y - X) + X;
+
+	a = rand() % 90 + 10; //10 ... 99
+
+
+	return 0;
+}
+==========================================================================
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	srand(time(NULL));
+	int choice;
+
+	//Вопросы
+	int questions = 0;
+	//Диапозон
+	int x = 0;
+	int y = 0;
+
+	//правильные ответы
+	int score = 0;
+
+	int incorrect = 0;
+
+	do
+	{
+		cout << "1 - First Game\n";//1 - 9 (5)
+		cout << "2 - Second Game\n";//10 - 99 (7)
+		cout << "3 - Third Game\n";//100 - 999 (10_
+		cout << "0 - exit\n";
+		cout << "Input your choice: ";
+		cin >> choice;
+
+		switch (choice)
+		{
+		case 1:
+			questions = 5;
+			x = 1;	y = 9;
+			break;
+		case 2:
+			questions = 7;
+			x = 10;	y = 99;
+			break;
+		case 3:
+			questions = 10;
+			x = 100;	y = 999;
+			break;
+		case 0:
+			cout << "Good bye! See you soon...\n";
+			break;
+		default:
+			cout << "\nINCORRECT OPERATION\n";
+			break;
+		}
+
+		if (choice >= 1 && choice <= 3)
+		{
+			for (int i = 0; i < questions; i++)
+			{
+				cout << "\n"<<i + 1 << ") Question: ";
+				int a = rand() % (y - x) + x;
+				int b = rand() % (y - x) + x;
+				int correct = a * b;
+
+				cout << a << " * " << b << " = ";
+				int answer;
+				cin >> answer;
+
+				if (answer == correct)
+				{
+					cout << "\nCorrect Answer\n";
+					score++;
+				}
+				else
+				{
+					cout << "\nIncorrect Answer\n";
+					incorrect--;
+					if (incorrect == -2)
+					{
+						cout << "You're Loser! Goodbye! Go out!\n";
+						return -2;
+					}
+				}
+			}
+			cout << "\nCongratulations!"<<endl;
+			cout << "Your score: " << score << "/" << questions << endl;
+			
+		}
+
+	} while (choice != 0);
+	return 0;
+}
