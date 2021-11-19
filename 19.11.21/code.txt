@@ -1,0 +1,159 @@
+=====================================================================================
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	
+	srand(time(NULL));
+	int secret, choice, a;
+	int score = 0;
+
+
+	
+
+	do
+	{
+		secret = rand() % 20 + 1;//1 .. 20
+		cout << "1 - Game with Player\n";
+		cout << "2 - Game with PC\n";
+		cout << "3 - exit()\n";
+		cout << "Enter your choice: ";
+		cin >> choice;
+
+		int min = 1, max = 20;
+		score = 0;
+		switch (choice)
+		{
+		case 1:
+			while (true)
+			{
+				cout << "Input secret number: ";
+				cin >> a;
+				score++;
+
+				if (a == secret)
+				{
+					cout << "EXACTLY!\n";
+					break;
+				}
+				else if (a == 0)
+				{
+					cout << "Bye-bye";
+					return 0;
+				}
+				else if (a > secret)
+				{
+					cout << "No, your number > my number\n";
+				}
+				else if (a < secret)
+				{
+					cout << "No, your number < my number\n";
+				}
+			}
+			cout << "You guessed my number in " << score << " attempt(s)\n";
+			break;
+		case 2:
+			while (true)
+			{
+				score++;
+
+				a = (min + max) / 2;
+
+				cout << "Secret Number = " << secret << " == " << "a = " << a << endl;
+
+				if (a == secret)
+				{
+					cout << "EXACTLY!\n";
+					break;
+				}
+				else if (a == 0)
+				{
+					cout << "Bye-bye";
+					return 0;
+				}
+				else if (a > secret)
+				{
+					cout << "No, your number > my number\n";
+					max = a;
+					//(Y - X) + X;
+				}
+				else if (a < secret)
+				{
+					cout << "No, your number < my number\n";
+					min = a;
+				}
+
+				
+			}
+			cout << "You guessed my number in " << score << " attempt(s)\n";
+
+			break;
+
+		case 3:
+			cout << "Goodbye!\n";
+			break;
+		default:
+			break;
+		}
+
+	} while (choice != 3);
+
+	return 0;
+}
+
+=====================================================================================
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	int sum = 0;
+	int a;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "Input number: ";
+		cin >> a;
+		
+		if (a == 0)
+		{
+			break;
+		}
+
+		sum += a;
+	}
+
+	cout << "Sum -> " << sum << endl;
+
+	return 0;
+}
+
+======================================================================
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	for (int i = 1; i <= 10; i++)
+	{
+		if (i % 2 != 0)
+		{
+			continue;
+		}
+
+		cout << i << " ";
+
+		//...
+		//...
+		//...(5 seconds)
+	}
+
+	return 0;
+}
+
+
