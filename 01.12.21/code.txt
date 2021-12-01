@@ -1,0 +1,196 @@
+#include <iostream>
+using namespace std;
+int main()
+{	
+	//Массив
+	int train[3];
+
+	//Ввод
+	for (int i = 0; i < 3; i++)
+	{
+		cout << "Input number: ";
+		cin >> train[i];
+	}
+
+	//Вывод
+	for (int i = 0; i < 3; i++)
+	{
+		cout << train[i] << " ";
+	}
+
+	cout << "Change number: ";
+	cin >> train[2];
+
+	//Вывод
+	for (int i = 0; i < 3; i++)
+	{
+		cout << train[i] << " ";
+	}
+
+	return 0;
+}
+
+=========================================================
+#include <iostream>
+using namespace std;
+int main()
+{	
+	setlocale(LC_ALL, "Russian");
+	//Массив
+	int marks[5];
+
+	//Ввод
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "Input marks: ";
+		cin >> marks[i];
+	}
+	
+	//Главная часть
+	//5,4,3,5,2
+	int sum = 0;
+	
+	for (int i = 0; i < 5; i++)
+	{
+		sum += marks[i];//sum = sum + marks[i]
+	}
+	
+	cout <<"Средняя оценка студента: " << sum / 5.0 << endl;
+
+	return 0;
+}
+
+
+=====================================================================
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	//Массив
+	int marks[6];
+
+	//Ввод
+
+	for (int i = 0; i < 6; i++)
+	{
+		cout << "Input marks: ";
+		cin >> marks[i];
+
+	}
+
+	int sum = 0;
+	for (int i = 0; i < 6; i++)
+	{
+		sum += marks[i];
+	}
+
+	cout << "SUM: " << sum << endl;
+
+	//Task 2 //0,1,2,3,4,5
+
+	for (int i = 5; i >= 0; i--)
+	{
+		cout << marks[i] << " ";
+	}
+
+	return 0;
+}
+
+==========================================
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	//Массив
+	int array[12];
+
+	srand(time(NULL));
+	//Ввод данных
+	for (int i = 0; i < 12; i++)
+	{
+		array[i] = rand() % 100;//0..99
+	}
+	
+	//Вывод данных
+	for (int i = 0; i < 12; i++)
+	{
+		cout << array[i] << "\t";
+	}
+	cout << endl;
+
+	//Найти max
+	int max = array[0];
+	int min = array[0];
+	for (int i = 1; i < 12; i++)
+	{
+		if (array[i] > max)
+		{
+			max = array[i];
+		}
+
+		else if (array[i] < min)
+		{
+			min = array[i];
+		}
+	}
+	cout << "Max: " << max << endl;
+	cout << "Min: " << min << endl;
+
+	return 0;
+}
+
+=================================================
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	//Массив
+	int array[10];
+
+	srand(time(NULL));
+	//Ввод данных
+	for (int i = 0; i < 5; i++)
+	{
+		array[i] = rand() % 100;//0..99
+	}
+	
+	//Вывод данных
+	for (int i = 0; i < 5; i++)
+	{
+		cout << array[i] << "\t";
+	}
+	cout << endl;
+
+	//Buble Sort
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5 - i - 1; j++)
+		{
+			if (array[j] > array[j + 1])
+			{
+				swap(array[j], array[j + 1]);
+				//Вывод данных
+				cout << endl;
+				for (int i = 0; i < 5; i++)
+				{
+					cout << array[i] << "\t";
+				}
+				cout << endl;
+			}
+		}
+	}
+
+
+	//Вывод данных
+	for (int i = 0; i < 5; i++)
+	{
+		cout << array[i] << "\t";
+	}
+	cout << endl;
+
+	return 0;
+}
+
