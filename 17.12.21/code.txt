@@ -1,0 +1,175 @@
+#include <iostream>
+using namespace std;
+
+//1) Функции
+//void - пустота
+
+//Синтаксис
+//тип имя_функции(параметр){}
+
+void _sum(int a, int b)
+{
+	cout << "a + b = " << a + b << endl;
+}
+
+int main()
+{
+	int a;
+	cout << "Input a: ";
+	cin >> a;
+
+	int b;
+	cout << "Input b: ";
+	cin >> b;
+
+	_sum(a, b);
+}
+
+==========================================
+#include <iostream>
+using namespace std;
+
+//2) Функции
+//void - пустота
+
+//Синтаксис
+//тип имя_функции(параметр){}
+
+void _sum(int a, int b);
+
+int main()
+{
+	int a;
+	cout << "Input a: ";
+	cin >> a;
+
+	int b;
+	cout << "Input b: ";
+	cin >> b;
+
+	_sum(a, b);
+}
+
+
+void _sum(int a, int b)
+{
+	cout << "a + b = " << a + b << endl;
+}
+
+====================================================
+#include <iostream>
+using namespace std;
+
+//Ввод данных
+void input(int array[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = rand() % 100;
+	}
+}
+
+//Вывод данных
+void output(int array[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+
+//Сумма всех чисел
+void summa(int array[], const int size)
+{
+	int sum = 0;
+	for (int i = 0; i < size; i++)
+	{
+		sum += array[i];
+	}
+	cout << "Sum = " << sum << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	const int size1 = 10;
+	int array[size1];
+	input(array, size1);
+	output(array, size1);
+	summa(array, size1);
+
+	const int size2 = 15;
+	int array2[size2];
+	input(array2, size2);
+	output(array2, size2);
+	summa(array2, size2);
+
+	const int size3 = 5;
+	int array3[size3];
+	input(array3, size3);
+	output(array3, size3);
+	summa(array3, size3);
+}
+
+========================================
+#include <iostream>
+using namespace std;
+
+//Ввод данных
+void input(int array[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = rand() % 100;
+	}
+}
+
+//Вывод данных
+void output(int array[], const int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << array[i] << " ";
+	}
+	cout << endl;
+}
+
+//Сумма всех чисел
+void sort(int array[], const int size, bool l)
+{
+	for (int i = 0; i < size - 1; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (!l)
+			{
+				if (array[i] < array[j])
+					swap(array[i], array[j]);
+			}
+			else
+			{
+				if (array[i] > array[j])
+					swap(array[i], array[j]);
+			}
+		}
+	}
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	const int size1 = 10;
+	int array[size1];
+	input(array, size1);
+	output(array, size1);
+
+	bool l;
+	cout << "Input 0 or 1: ";
+	cin >> l;
+
+	sort(array, size1, l);
+	output(array, size1);
+}
