@@ -1,0 +1,213 @@
+#include <iostream>
+using namespace std;
+
+int _max(int a, int b)
+{
+	/*if (a > b)
+		return a;
+	else
+		return b;*/
+
+	return a > b ? a : b;
+}
+
+int main()
+{
+	srand(time(NULL));
+	int a = 5;
+	int b = 10;
+
+	int max = 0;
+	max = _max(a, b);
+	//cout << "Max: " << max << endl;
+	cout << "Max: " << _max(a, b) << endl;
+	
+	return 0;
+}
+
+==============================================
+#include <iostream>
+using namespace std;
+
+//Глабальная переменная
+int a = 10;
+
+int _max(int a, int b)
+{
+	/*if (a > b)
+		return a;
+	else
+		return b;*/
+
+	//sum++;
+
+	return a > b ? a : b;
+}
+
+
+
+int main()
+{
+	srand(time(NULL));
+	int a = 5;
+	int b = 10;
+
+	int max = 0;
+	max = _max(a, b);
+	//cout << "Max: " << max << endl;
+	cout << "Max: " << _max(a, b) << endl;
+
+	cout << (a > b ? a : b) << endl;
+	
+	return 0;
+}
+
+=====================================================
+#include <iostream>
+using namespace std;
+
+//static переменная
+void hello()
+{
+	static int a = 5;
+	a++;
+	cout << "a = " << a << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	hello();
+	hello();
+	hello();
+
+	return 0;
+
+}
+
+==================================================
+#include <iostream>
+using namespace std;
+
+//Перугрузка фукнции
+void sum(int a, int b)
+{
+	cout << "1\n";
+	cout << "a + b = " << a + b << endl;
+}
+
+void sum(double a, double b)
+{
+	cout << "2\n";
+	cout << "a + b = " << a + b << endl;
+}
+
+void sum(int a, int b, int c)
+{
+	cout << "a + b + c = " << a + b + c << endl;
+}
+
+void sum(string a, string b)
+{
+	cout << a + " " + b << endl;
+}
+
+int main()
+{
+	srand(time(NULL));
+
+	string word1 = "Hello";
+	string word2 = "World!";
+
+	sum(5.5, 6.7);
+	sum(3, 5);
+	sum(5, 3, 2);
+	sum(word1, word2);
+
+	return 0;
+}
+
+===========================================
+#include <iostream>
+#include <chrono>
+using namespace std;
+
+int fact(int f)
+{
+	if (f == 1 || f == 0)
+		return 1;
+	else
+		return f * fact(f - 1);
+	
+}
+
+int fib(int f)
+{
+	if (f == 0)
+		return 0;
+	else if (f == 1)
+		return 1;
+	else
+		return fib(f - 1) + fib(f - 2);
+}
+
+int loop_fib(int f)
+{
+	int sum = 0;
+	int fib1 = 0;
+	int fib2 = 1;
+	if (f == 0)
+		return 0;
+	else if (f == 1)
+		return 1;
+	else
+	{
+		for (int i = 2; i <= f; i++)
+		{
+			sum = fib1 + fib2;//0 + 1 + 1
+			fib1 = fib2;
+			fib2 = sum;
+		}
+		return sum;
+	}
+}
+
+int main()
+{
+	{
+		auto start = chrono::steady_clock::now();
+		cout << fib(5) << endl;
+		auto end = std::chrono::steady_clock::now();
+		chrono::duration<double> elapsed_seconds = end - start;
+		cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
+	}
+	{
+		auto start = chrono::steady_clock::now();
+		cout << loop_fib(5) << endl;
+		auto end = std::chrono::steady_clock::now();
+		chrono::duration<double> elapsed_seconds = end - start;
+		cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
+	}
+	return 0;
+}
+
+====================================================================
+#include <iostream>
+using namespace std;
+
+int _pow(int a, int b)
+{
+	if (b == 0)
+		return 1;
+	else if (b == 1)
+		return a;
+	else
+		return a * _pow(a, b - 1);
+}
+
+int main()
+{
+	cout<<_pow(2, 5);
+	return 0;
+}
