@@ -1,0 +1,161 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	const int size = 7;
+	int array[size] = { 2, 0, -5, 9, 1, 18, 21 };
+	
+	for (int i = 0; i < size; i++)
+		cout << array[i] << " ";
+	cout << endl;
+
+	//Insertion Sort
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (array[i] > array[j])
+				swap(array[i], array[j]);
+		}
+	}
+
+	//foreach
+	for (int element : array)
+	{
+		cout << element << " ";
+	}
+	cout << endl;
+
+
+	return 0;
+}
+===========================================================
+#include <iostream>
+using namespace std;
+int main()
+{
+	const int size = 7;
+	int array[size] = { 2, 0, -5, 9, 1, 18, 21 };
+	
+	for (int i = 0; i < size; i++)
+		cout << array[i] << " ";
+	cout << endl;
+
+	//Insertion Sort, Select, Bubble-> O(n^2)
+	//O -const 
+	//n -> size
+
+	//O - 1s     n - 7   -> 1 * 49 = 49s
+
+	//Quick Sort -> O(n)
+	//O - 1s     n - 7   -> 1 * 7 = 7s
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (array[i] > array[j])
+				swap(array[i], array[j]);
+		}
+	}
+
+
+	//Binary Search(O(log(n))
+	//{-5, 0, 1, 2, 9, 18, 21}
+	int number;
+	cout << "Input find number: ";
+	cin >> number;
+
+	int left = 0, right = size - 1;//7-1
+	while (left <= right)
+	{
+		int mid = left + (right-left) / 2;
+		
+		if (array[mid] == number)
+			cout << "Index is --> " << mid + 1 << endl;
+		
+		if (number > array[mid])
+			left = mid + 1;
+		else
+			right = mid - 1;
+	}
+
+
+	//O(1)
+	/*
+	* int max(int a, int b)
+	* {
+	*	return a > b ? a : b;
+	* }
+	*/
+
+	//foreach
+	for (int element : array)
+	{
+		cout << element << " ";
+	}
+	cout << endl;
+
+
+	return 0;
+}
+
+
+====================================================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	//Указатель = адрес
+	int a = 10;
+
+	//Синтаксис
+	int* ptr = &a;
+
+	cout << "ptr(address) = " << ptr << endl;
+
+	cout << "ptr(value) = " << *ptr << endl;
+
+	cout << "a = " << a << "\t a(address) = " << &a << endl;
+
+	*ptr = *ptr + 5;
+	cout << "\n\nptr(value) = " << *ptr << endl;
+	cout << "a = " << a << endl;
+
+	return 0;
+}
+
+
+======================================================
+#include <iostream>
+using namespace std;
+
+//void foo(int* a)
+//{
+//	*a = 0;
+//}
+
+void _swap(int* a, int* b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+int main()
+{
+	/*int a = 10;
+	cout << "a = " << a << endl;
+
+	foo(&a);
+
+	cout << "a = " << a << endl;*/
+
+	int a = 10, b = 20;
+	cout << "a = " << a << " " << "b = " << b << endl;
+	_swap(&a, &b);
+	cout << "a = " << a << " " << "b = " << b << endl;
+
+	return 0;
+}
