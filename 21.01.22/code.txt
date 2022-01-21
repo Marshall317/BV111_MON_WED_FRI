@@ -1,0 +1,145 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	//Указатель
+	int a = 10;
+	int b = 20;
+	int* ptr;
+	ptr = &a;//F1
+	*ptr = 5;
+	ptr = &b;
+
+	//Константный указатель
+	const int size = 7;
+	const int size2 = 10;
+	const int* ptr2 = &size;
+	ptr2 = &size2;
+	ptr2 = &a;
+	//Нельзя!!! *ptr2 = 20;
+
+	//Указатель на константу
+	int* const ptr3 = &a;
+	*ptr3 = 20;
+	//Нельзя!!! ptr3 = &b;
+
+
+	//Константный указатель указатель на const
+	const int* const ptr4 = &size;
+
+	return 0;
+}
+===================================================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	//Создаем переменную в куче
+	int k = 0;
+
+	int* ptr = nullptr;
+
+	int* a = new int;//F1
+	*a = 5;
+	cout << "a = " << *a << endl;
+	
+	delete a;
+	a = nullptr;
+
+	//...
+	//...
+	a = new int;//F2
+	*a = 10;
+	cout << "a = " << *a << endl;
+
+	delete a;
+	a = nullptr;
+
+	return 0;
+}
+
+======================================================
+#include <iostream>
+using namespace std;
+
+void output(int* array)
+{
+	for (int i = 0; i < 5; i++)
+		cout << array[i] << " ";
+	cout << endl;
+}
+
+int main()
+{
+	int array[5] = { 1,2,3,4,5 };
+	int b = 5;
+	output(array);
+
+	cout << array << endl;
+
+	return 0;
+}
+
+======================================================
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int size;
+	cin >> size;
+	//Нельзя!!! int array[size];
+	int* array = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = i + 1;
+		cout << array[i] << " ";
+	}
+
+	delete[] array;
+
+	array = new int[10];
+
+	for (int i = 0; i < size; i++)
+	{
+		array[i] = i + 1;
+		cout << array[i] << " ";
+	}
+
+	delete[] array;
+
+	return 0;
+}
+
+======================================================
+#include <iostream>
+using namespace std;
+
+//Утечки памяти - если нет delete
+void show()
+{
+	int* array = new int[5]{ 1,2,3,4,5 };
+	for (int i = 0; i < 5; i++)
+		cout << array[i] << " ";
+
+	delete[] array;
+}
+
+int main()
+{
+	show();
+
+	//...
+
+	show();
+
+	//...
+	show();
+
+
+	//100
+	return 0;
+}
